@@ -1,0 +1,38 @@
+@import "~bootstrap/scss/functions";
+@import "./helpers/variables";
+@import "~bootstrap/scss/bootstrap";
+
+@import "./dashboard";
+
+
+body {
+  font-family:  -apple-system, BlinkMacSystemFont, 
+    "Microsoft JhengHei","Segoe UI", "Microsoft JhengHei", Roboto, 
+    "Helvetica Neue", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.text-custom {
+  color: rgb(227, 223, 207);
+  &:hover {
+    color: rgb(169, 151, 118);
+  }
+}
+
+.btn-cart {
+  position: relative;
+  .badge {
+    position: absolute;
+    top: -2px;
+    right: -10px;
+  } 
+}
+
+.box-shadow {
+  box-shadow: 0 3px 5px rgba($color: #000, $alpha: .16);
+}
+
+.dropdown-menu-right {
+  right: 0;
+  left: auto;
+}
