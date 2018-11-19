@@ -21,13 +21,12 @@
           <p class="h6 my-3">{{ product.description }}</p>
           <p class="mb-5">{{ product.content }}</p>
           <hr>
-          <div class="d-flex justify-content-end">
-            <div class="h5" v-if="!product.price">{{product.origin_price | currency}}</div>
-            <del class="h6 text-muted" v-if="product.price">原價 {{product.origin_price | currency}}</del>
-            <div class="h5 ml-auto text-success" v-if="product.price">特價 <strong>{{product.price | currency}}</strong></div>
+          <div class="d-flex justify-content-between" v-if="product.price">
+            <div class="h5" v-if="!product.price">售價 {{ product.origin_price | currency }}</div>
+            <del class="h6 text-muted" v-if="product.price">原價 {{ product.origin_price | currency }}</del>
+            <div class="h5 text-success" v-if="product.price">特價 <b>{{ product.price | currency }}</b></div>
           </div>
-          <div class="row mt-4">
-            <div class="col-md-6"></div>
+          <div class="row mt-4 justify-content-center">
             <div class="col-md-6">
               <button class="btn btn-primary btn-block" @click="addtoCart(product.id)">
                 <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === product.id"></i>加入購物車
@@ -65,8 +64,10 @@ export default {
 
       this.$http.get(api).then(response => {
         // console.log(response.data);
-        vm.product = response.data.product;
-        vm.isLoading = false;
+        if (response.data.success === true) {
+          vm.product = response.data.product;
+          vm.isLoading = false;
+        }
       });
     },
     addtoCart(id, qty = 1) {
