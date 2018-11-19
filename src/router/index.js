@@ -56,7 +56,6 @@ export default new Router({
       path: '/admin',
       name: 'Dashboard',
       component: Dashboard,
-      meta: { requiresAuth: true },
       children: [
         {
           path: 'products',
