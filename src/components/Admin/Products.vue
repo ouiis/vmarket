@@ -59,10 +59,10 @@
                   <input type="text" class="form-control" id="image" placeholder="請輸入圖片連結">
                 </div>
                 <div class="form-group">
-                  <label for="customFile">或 上傳圖片
+                  <label class="customUpload btn btn-info w-100" for="customFile">或 上傳圖片
                     <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
+                    <input type="file" id="customFile" class="form-control" ref="files" @change="uploading">
                   </label>
-                  <input type="file" id="customFile" class="form-control" ref="files" @change="uploading">
                 </div>
                 <img :src="tempProduct.imageUrl" class="img-fluid" alt="">
               </div>
@@ -220,8 +220,12 @@ export default {
         process.env.CUSTOMPATH
       }/admin/upload`;
 
-      formData.append("file-to-upload", file);
-      this.status.fileUploading = true;
+      if (this.$refs.files.files[0]) {
+        formData.append("file-to-upload", file);
+        this.status.fileUploading = true;
+      } else {
+        return;
+      }
 
       this.$http
         .post(api, formData, {

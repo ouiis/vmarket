@@ -6,10 +6,18 @@
         <div class="col-lg-3">
           <!-- 左側選單 (List group) -->
           <div class="list-group sticky-top">
-            <a class="list-group-item list-group-item-action active" data-toggle="list" href="#list-gold">
-              <i class="fas fa-space-shuttle fa-lg mr-2"></i> 復仇者</a>
-            <a class="list-group-item list-group-item-action" data-toggle="list" href="#list-gift">
-              <i class="fas fa-users fa-lg mr-2"></i> 復仇者聯盟</a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#"
+              @click.prevent="category = '全部電影'" :class="{ 'active':  category === '全部電影'}">
+              <i class="fas fa-video fa-lg mr-2"></i> 全部電影
+            </a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#"
+              @click.prevent="category = '復仇者成員'" :class="{ 'active':  category === '復仇者成員'}">
+              <i class="fas fa-space-shuttle fa-lg mr-2"></i> 復仇者成員
+            </a>
+            <a class="list-group-item list-group-item-action" data-toggle="list" href="#"
+              @click.prevent="category = '復仇者聯盟'" :class="{ 'active':  category === '復仇者聯盟'}">
+              <i class="fas fa-users fa-lg mr-2"></i> 復仇者聯盟
+            </a>
             <a class="list-group-item list-group-item-action">
               <i class="far fa-gem fa-lg mr-2"></i> 無限寶石
             </a>
@@ -29,49 +37,19 @@
               </div>
             </form>
           </div>
-
           <!-- Card 1 -->
           <div class="tab-content">
             <loading :active.sync="isLoading"></loading>
-            <div class="tab-pane active" id="list-gold">
+            <div class="tab-pane active" v-if="category === '全部電影' && !filter">
               <div class="row">
-                <div class="col-lg-4 mb-4" v-for="item in avenger" :key="item.id">
+                <div class="col-lg-4 mb-4" v-for="item in products" :key="item.id">
                   <div class="card border-0 text-center h-100 box-shadow">
-                    <div style="height: 350px; background-size: cover; background-position: center"
+                    <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
                       :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                    <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                    :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                     <div class="card-body">
-                      <div class="text-right"><span class="badge badge-secondary">{{ item.category }}</span></div>
-                      <h4 class="card-title text-left">{{ item.title }}</h4>
-                      <p class="card-text text-left">{{ item.description }}</p>
-                    </div>
-                    <div class="card-footer border-top-0 bg-white">
-                      <div class="d-flex justify-content-between align-items-baseline mb-3">
-                        <div class="h5" v-if="!item.price">{{item.origin_price}} 元</div>
-                        <del class="h6 text-muted" v-if="item.price">原價 {{item.origin_price}} 元</del>
-                        <div class="h5" v-if="item.price">特價 {{item.price}} 元</div>
-                      </div>
-                      <button type="button" class="btn btn-primary btn-sm" @click="checkDetail(item.id)">
-                        電影介紹
-                      </button>
-                      <button type="button" class="btn btn-info btn-sm ml-auto" @click="addtoCart(item.id)">
-                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                        加入購物車
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <!-- Card 2 -->
-            <div class="tab-pane" id="list-gift">
-              <div class="row align-items-stretch">
-                <div class="col-lg-4 mb-4" v-for="item in avengers" :key="item.id">
-                  <div class="card border-0 text-center h-100 box-shadow">
-                    <div style="height: 350px; background-size: cover; background-position: center"
-                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-                    <div class="card-body">
-                      <div class="text-right"><span class="badge badge-secondary">{{ item.category }}</span></div>
+                      <div class="text-right mb-2"><span class="badge badge-secondary">{{ item.category }}</span></div>
                       <h4 class="card-title text-left">{{ item.title }}</h4>
                       <p class="card-text text-left">{{ item.description }}</p>
                     </div>
@@ -89,13 +67,41 @@
                   </div>
                 </div>
               </div>
+              <!-- 分頁 -->
+              <pagination :pageData="pagination" @renderPage="getProducts"></pagination>
             </div>
-            <!-- 分頁 -->
-            <pagination :pageData="pagination" @renderPage="getProducts"></pagination>
+            <!-- Card 2 -->
+            <div class="tab-pane active" v-else>
+              <div class="row">
+                <div class="col-lg-4 mb-4" v-for="item in newProducts" :key="item.id">
+                  <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
+                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                  <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                  <div class="card-body">
+                    <div class="text-right mb-2"><span class="badge badge-secondary">{{ item.category }}</span></div>
+                    <h4 class="card-title text-left">{{ item.title }}</h4>
+                    <p class="card-text text-left">{{ item.description }}</p>
+                  </div>
+                  <div class="card-footer border-top-0 bg-white">
+                    <div class="d-flex justify-content-between align-items-baseline mb-3">
+                      <div class="h5" v-if="!item.price">{{item.origin_price}} 元</div>
+                      <del class="h6 text-muted" v-if="item.price">原價 {{item.origin_price}} 元</del>
+                      <div class="h5" v-if="item.price">特價 {{item.price}} 元</div>
+                    </div>
+                    <button type="button" class="btn btn-primary btn-sm" @click="checkDetail(item.id)">電影介紹</button>
+                    <button type="button" class="btn btn-info btn-sm ml-auto" @click="addtoCart(item.id)">
+                      <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i> 加入購物車
+                    </button>
+                  </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
-    </div>
 
   </div>
 </template>
@@ -112,16 +118,28 @@ export default {
   data() {
     return {
       products: [],
+      allProducts: [],
       pagination: {},
       isLoading: false,
       status: {
         loadingItem: ""
       },
       filter: "",
-      category: ""
+      category: "全部電影"
     };
   },
   methods: {
+    getAllProducts() {
+      const vm = this;
+      const api = `${process.env.APIPATH}/api/${
+        process.env.CUSTOMPATH
+      }/products/all`;
+
+      this.$http.get(api).then(response => {
+        // console.log(response.data);
+        vm.allProducts = response.data.products;
+      });
+    },
     getProducts(page = 1) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${
@@ -134,6 +152,7 @@ export default {
         // console.log(response.data);
         vm.products = response.data.products;
         vm.pagination = response.data.pagination;
+
         vm.isLoading = false;
       });
     },
@@ -157,33 +176,26 @@ export default {
     }
   },
   computed: {
-    avenger() {
+    newProducts() {
       const vm = this;
       let newAry = [];
 
       if (!this.filter) {
-        newAry = this.products.filter(item => {
-          return item.title !== "復仇者聯盟";
+        nnewAry = this.allProducts.filter(item => {
+          return item.category === vm.category;
         });
       } else {
-        newAry = this.products.filter(item => {
+        newAry = this.allProducts.filter(item => {
           return item.title.match(vm.filter);
         });
       }
 
       return newAry;
-    },
-    avengers() {
-      const vm = this;
-      let newAry = [];
-
-      return (newAry = this.products.filter(item => {
-        return item.title === "復仇者聯盟";
-      }));
     }
   },
   created() {
     this.getProducts();
+    this.getAllProducts();
   }
 };
 </script>
