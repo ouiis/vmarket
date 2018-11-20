@@ -37,11 +37,7 @@
               </div>
             </form>
           </div>
-<<<<<<< HEAD
-          <!-- Card -->
-=======
           <!-- Card 1 -->
->>>>>>> gh-pages
           <div class="tab-content">
             <loading :active.sync="isLoading"></loading>
             <div class="tab-pane active" v-if="category === '全部電影' && !filter">
@@ -49,11 +45,6 @@
                 <div class="col-lg-4 mb-4" v-for="item in products" :key="item.id">
                   <div class="card border-0 text-center h-100 box-shadow">
                     <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
-<<<<<<< HEAD
-                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-                      <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
-=======
->>>>>>> gh-pages
                       :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                     <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
                     :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
@@ -111,11 +102,8 @@
                 </div>
               </div>
             </div>
-<<<<<<< HEAD
-=======
           </div>
 
->>>>>>> gh-pages
           </div>
         </div>
       </div>
