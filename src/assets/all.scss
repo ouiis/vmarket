@@ -36,3 +36,10 @@ body {
   right: 0;
   left: auto;
 }
+
+.customUpload {
+  display: inline-block;
+  input {
+    display: none;
+  }
+}

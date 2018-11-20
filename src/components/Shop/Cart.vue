@@ -27,8 +27,8 @@
               <tr>
                 <th width="30"></th>
                 <th width="100"></th>
-                <th>商品名稱</th>
-                <th width="100">數量</th>
+                <th>電影名稱</th>
+                <th width="100">期限</th>
                 <th width="80">小計</th>
               </tr>
             </thead>
@@ -46,7 +46,7 @@
                   {{ item.product.title }}
                   <p class="text-success" v-if="item.coupon">已套用優惠券</p>
                 </td>
-                <td class="align-middle">{{ item.qty }} /{{ item.product.unit }}</td>
+                <td class="align-middle">{{ item.qty }} {{ item.product.unit }}</td>
                 <td class="align-middle text-right">
                   <span class="text-success" v-if="item.coupon"> {{ item.final_total | currency }}</span>
                   <span v-else>{{ item.total | currency }}</span>
@@ -165,6 +165,7 @@ export default {
 
       this.$http.delete(api).then(response => {
         vm.getCart();
+        this.$bus.$emit("updateCart");
         vm.isLoading = false;
       });
     },

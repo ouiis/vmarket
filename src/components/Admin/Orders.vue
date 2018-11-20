@@ -6,7 +6,7 @@
         <th>訂購時間</th>
         <th>Email</th>
         <th>商品名稱</th>
-        <th>觀看次數</th>
+        <th>觀看期限</th>
         <th>訂單金額</th>
         <th>付款狀態</th>
       </thead>

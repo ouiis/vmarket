@@ -28,7 +28,13 @@
           </div>
           <div class="row mt-4 justify-content-center">
             <div class="col-md-6">
-              <button class="btn btn-primary btn-block" @click="addtoCart(product.id)">
+              <select class="form-control" name="qty" v-model="quantity">
+                <option value="" hidden>請選擇觀看期限</option>
+                <option v-for="qty in 10" :value="qty" :key="qty">選購 {{ qty }} {{ product.unit }}</option>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <button class="btn btn-primary btn-block" @click="addtoCart(product.id, quantity)">
                 <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === product.id"></i>加入購物車
               </button>
             </div>
@@ -46,6 +52,7 @@ export default {
   data() {
     return {
       product: {},
+      quantity: "",
       productId: "",
       isLoading: false,
       status: {
