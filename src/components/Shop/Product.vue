@@ -26,11 +26,7 @@
             <del class="h6 text-muted" v-if="product.price">原價 {{ product.origin_price | currency }}</del>
             <div class="h5 text-success" v-if="product.price">特價 <b>{{ product.price | currency }}</b></div>
           </div>
-<<<<<<< HEAD
-          <div class="row mt-4 justify-content-center">
-=======
           <div class="row mt-4">
->>>>>>> gh-pages
             <div class="col-md-6">
               <select class="form-control" name="qty" v-model="quantity">
                 <option value="" hidden>請選擇觀看期限</option>
