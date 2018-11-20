@@ -66,7 +66,7 @@
             <!-- Card 2 -->
             <div class="tab-pane" id="list-gift">
               <div class="row align-items-stretch">
-                <div class="col-md-4 mb-4" v-for="item in avengers" :key="item.id">
+                <div class="col-lg-4 mb-4" v-for="item in avengers" :key="item.id">
                   <div class="card border-0 text-center h-100 box-shadow">
                     <div style="height: 350px; background-size: cover; background-position: center"
                       :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
