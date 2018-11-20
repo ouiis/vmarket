@@ -181,7 +181,7 @@ export default {
       let newAry = [];
 
       if (!this.filter) {
-        nnewAry = this.allProducts.filter(item => {
+        newAry = this.allProducts.filter(item => {
           return item.category === vm.category;
         });
       } else {
