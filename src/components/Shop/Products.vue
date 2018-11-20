@@ -37,7 +37,11 @@
               </div>
             </form>
           </div>
+<<<<<<< HEAD
           <!-- Card -->
+=======
+          <!-- Card 1 -->
+>>>>>>> gh-pages
           <div class="tab-content">
             <loading :active.sync="isLoading"></loading>
             <div class="tab-pane active" v-if="category === '全部電影' && !filter">
@@ -45,9 +49,14 @@
                 <div class="col-lg-4 mb-4" v-for="item in products" :key="item.id">
                   <div class="card border-0 text-center h-100 box-shadow">
                     <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
+<<<<<<< HEAD
                       :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                       <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+=======
+>>>>>>> gh-pages
                       :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                    <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                    :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                     <div class="card-body">
                       <div class="text-right mb-2"><span class="badge badge-secondary">{{ item.category }}</span></div>
                       <h4 class="card-title text-left">{{ item.title }}</h4>
@@ -59,12 +68,9 @@
                         <del class="h6 text-muted" v-if="item.price">原價 {{item.origin_price}} 元</del>
                         <div class="h5" v-if="item.price">特價 {{item.price}} 元</div>
                       </div>
-                      <button type="button" class="btn btn-primary btn-sm" @click="checkDetail(item.id)">
-                        電影介紹
-                      </button>
+                      <button type="button" class="btn btn-primary btn-sm" @click="checkDetail(item.id)">電影介紹</button>
                       <button type="button" class="btn btn-info btn-sm ml-auto" @click="addtoCart(item.id)">
-                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i>
-                        加入購物車
+                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i> 加入購物車
                       </button>
                     </div>
                   </div>
@@ -73,14 +79,15 @@
               <!-- 分頁 -->
               <pagination :pageData="pagination" @renderPage="getProducts"></pagination>
             </div>
+            <!-- Card 2 -->
             <div class="tab-pane active" v-else>
               <div class="row">
                 <div class="col-lg-4 mb-4" v-for="item in newProducts" :key="item.id">
                   <div class="card border-0 text-center h-100 box-shadow">
                     <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
-                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-                      <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
-                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                        :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                    <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                        :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
                     <div class="card-body">
                       <div class="text-right mb-2"><span class="badge badge-secondary">{{ item.category }}</span></div>
                       <h4 class="card-title text-left">{{ item.title }}</h4>
@@ -104,10 +111,14 @@
                 </div>
               </div>
             </div>
+<<<<<<< HEAD
+=======
+          </div>
+
+>>>>>>> gh-pages
           </div>
         </div>
       </div>
-    </div>
 
   </div>
 </template>

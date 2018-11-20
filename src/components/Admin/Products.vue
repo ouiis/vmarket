@@ -61,7 +61,10 @@
                 <div class="form-group">
                   <label class="customUpload btn btn-info w-100" for="customFile">或 上傳圖片
                     <i class="fas fa-spinner fa-spin" v-if="status.fileUploading"></i>
+<<<<<<< HEAD
                     
+=======
+>>>>>>> gh-pages
                     <input type="file" id="customFile" class="form-control" ref="files" @change="uploading">
                   </label>
                 </div>
