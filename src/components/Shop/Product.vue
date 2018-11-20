@@ -33,7 +33,7 @@
                 <option v-for="qty in 10" :value="qty" :key="qty">選購 {{ qty }} {{ product.unit }}</option>
               </select>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-md-0 mt-3">
               <button class="btn btn-primary btn-block" @click="addtoCart(product.id, quantity)">
                 <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === product.id"></i>加入購物車
               </button>
