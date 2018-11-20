@@ -74,30 +74,32 @@
             <div class="tab-pane active" v-else>
               <div class="row">
                 <div class="col-lg-4 mb-4" v-for="item in newProducts" :key="item.id">
-                  <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
-                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-                  <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
-                      :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
-                  <div class="card-body">
-                    <div class="text-right mb-2"><span class="badge badge-secondary">{{ item.category }}</span></div>
-                    <h4 class="card-title text-left">{{ item.title }}</h4>
-                    <p class="card-text text-left">{{ item.description }}</p>
-                  </div>
-                  <div class="card-footer border-top-0 bg-white">
-                    <div class="d-flex justify-content-between align-items-baseline mb-3">
-                      <div class="h5" v-if="!item.price">{{item.origin_price}} 元</div>
-                      <del class="h6 text-muted" v-if="item.price">原價 {{item.origin_price}} 元</del>
-                      <div class="h5" v-if="item.price">特價 {{item.price}} 元</div>
+                  <div class="card border-0 text-center h-100 box-shadow">
+                    <div class="d-lg-block d-none" style="height: 350px; background-size: cover; background-position: center;"
+                        :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                    <div class="d-lg-none" style="height: 350px; background-size: contain; background-repeat: no-repeat; background-position: center;"
+                        :style="{backgroundImage: `url(${item.imageUrl})`}"></div>
+                    <div class="card-body">
+                      <div class="text-right mb-2"><span class="badge badge-secondary">{{ item.category }}</span></div>
+                      <h4 class="card-title text-left">{{ item.title }}</h4>
+                      <p class="card-text text-left">{{ item.description }}</p>
                     </div>
-                    <button type="button" class="btn btn-primary btn-sm" @click="checkDetail(item.id)">電影介紹</button>
-                    <button type="button" class="btn btn-info btn-sm ml-auto" @click="addtoCart(item.id)">
-                      <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i> 加入購物車
-                    </button>
-                  </div>
+                    <div class="card-footer border-top-0 bg-white">
+                      <div class="d-flex justify-content-between align-items-baseline mb-3">
+                        <div class="h5" v-if="!item.price">{{item.origin_price}} 元</div>
+                        <del class="h6 text-muted" v-if="item.price">原價 {{item.origin_price}} 元</del>
+                        <div class="h5" v-if="item.price">特價 {{item.price}} 元</div>
+                      </div>
+                      <button type="button" class="btn btn-primary btn-sm" @click="checkDetail(item.id)">電影介紹</button>
+                      <button type="button" class="btn btn-info btn-sm ml-auto" @click="addtoCart(item.id)">
+                        <i class="fas fa-spinner fa-spin" v-if="status.loadingItem === item.id"></i> 加入購物車
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
           </div>
         </div>
