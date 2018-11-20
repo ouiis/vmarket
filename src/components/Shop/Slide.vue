@@ -10,19 +10,19 @@
       </ol>
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img class="d-block w-100" src="@/assets/slide/ironman.jpg" alt="First slide">
+          <img class="d-block w-100" src="static/slide/ironman.jpg" alt="First slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="@/assets/slide/hulk.jpg" alt="Second slide">
+          <img class="d-block w-100" src="static/slide/hulk.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="@/assets/slide/thor.jpg" alt="Third slide">
+          <img class="d-block w-100" src="static/slide/thor.jpg" alt="Third slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="@/assets/slide/captain.jpg" alt="forth slide">
+          <img class="d-block w-100" src="static/slide/captain.jpg" alt="forth slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="@/assets/slide/avengers.jpg" alt="fifth slide">
+          <img class="d-block w-100" src="static/slide/avengers.jpg" alt="fifth slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
