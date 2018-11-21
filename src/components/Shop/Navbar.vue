@@ -19,7 +19,7 @@
                   <tr v-for="item in carts.carts" :key="item.id">
                     <td><a href="" @click.prevent="removeCartItem(item.id)"><i class="far fa-trash-alt"></i></a></td>
                     <td>{{ item.product.title }}</td>
-                    <td width="50">{{ item.qty }} {{ item.product.unit }}</td>
+                    <td width="50" class="text-right">{{ item.qty }} {{ item.product.unit }}</td>
                     <td class="text-right">{{ item.total | currency }}</td>
                   </tr>
                 </tbody>
