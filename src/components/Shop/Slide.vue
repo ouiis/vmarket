@@ -16,13 +16,13 @@
           <img class="d-block w-100" src="static/slide/ironman.jpg" alt="Second slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="static/slide/hulk.jpg" alt="First slide">
+          <img class="d-block w-100" src="static/slide/hulk.jpg" alt="Third slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="static/slide/thor.jpg" alt="Third slide">
+          <img class="d-block w-100" src="static/slide/thor.jpg" alt="Forth slide">
         </div>
         <div class="carousel-item">
-          <img class="d-block w-100" src="static/slide/captain.jpg" alt="fifth slide">
+          <img class="d-block w-100" src="static/slide/captain.jpg" alt="Fifth slide">
         </div>
       </div>
       <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
