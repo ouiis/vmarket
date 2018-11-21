@@ -15,10 +15,10 @@
       </thead>
       <tbody>
         <tr v-for="item in coupons" :key="item.id">
-          <td>{{item.title}}</td>
-          <td>{{item.code}}</td>
-          <td>{{item.due_date}}</td>          
-          <td>{{item.percent}}</td>          
+          <td>{{ item.title }}</td>
+          <td>{{ item.code }}</td>
+          <td>{{ item.due_date }}</td>          
+          <td>{{ item.percent }}</td>          
           <td>
             <span v-if="item.is_enabled" class="text-success">啟用</span>
             <span v-else class="text-secondary">不啟用</span>
@@ -152,27 +152,29 @@ export default {
       $("#couponModal").modal("show");
     },
     updateCoupon(page = 1) {
+      const vm = this;
       let api = `${process.env.APIPATH}/api/${
         process.env.CUSTOMPATH
       }/admin/coupon?page=${page}`;
-      let httpMethod = "post";
-      const vm = this;
+      let method = "post";
 
       if (!this.isNew) {
         api = `${process.env.APIPATH}/api/${
           process.env.CUSTOMPATH
         }/admin/coupon/${vm.tempCoupon.id}`;
-        httpMethod = "put";
+        method = "put";
       }
 
-      this.$http[httpMethod](api, { data: vm.tempCoupon }).then(response => {
+      this.$http[method](api, { data: vm.tempCoupon }).then(response => {
         // console.log(response.data);
         if (response.data.success) {
           $("#couponModal").modal("hide");
+          this.$bus.$emit("alertMessage", response.data.message, "success");
           vm.getCoupons();
         } else {
           $("#couponModal").modal("hide");
-          console.log("新增失敗");
+          this.$bus.$emit("alertMessage", response.data.message, "danger");
+          vm.getCoupons();
         }
       });
     },
@@ -181,19 +183,20 @@ export default {
       $("#delCouponModal").modal("show");
     },
     deleteCoupon() {
+      const vm = this;
       const api = `${process.env.APIPATH}/api/${
         process.env.CUSTOMPATH
-      }/admin/coupon/${this.tempCoupon.id}`;
-      const vm = this;
+      }/admin/coupon/${vm.tempCoupon.id}`;
 
       this.$http.delete(api).then(response => {
-        if (response.data) {
+        if (response.data.success) {
           $("#delCouponModal").modal("hide");
+          this.$bus.$emit("alertMessage", response.data.message, "success");
           vm.getCoupons();
         } else {
           $("#delCouponModal").modal("hide");
+          this.$bus.$emit("alertMessage", response.data.message, "danger");
           vm.getCoupons();
-          console.log("刪除失敗");
         }
       });
     }
