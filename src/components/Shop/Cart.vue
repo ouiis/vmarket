@@ -28,8 +28,8 @@
                 <th width="30"></th>
                 <th width="100"></th>
                 <th>電影名稱</th>
-                <th width="100">期限</th>
-                <th width="80">小計</th>
+                <th width="50">期限</th>
+                <th width="30" class="text-right">小計</th>
               </tr>
             </thead>
             <tbody>
@@ -46,7 +46,7 @@
                   {{ item.product.title }}
                   <p class="text-success" v-if="item.coupon">已套用優惠券</p>
                 </td>
-                <td class="align-middle">{{ item.qty }} / {{ item.product.unit }}</td>
+                <td class="align-middle">{{ item.qty }} {{ item.product.unit }}</td>
                 <td class="align-middle text-right">
                   <span class="text-success" v-if="item.coupon"> {{ item.final_total | currency }}</span>
                   <span v-else>{{ item.total | currency }}</span>

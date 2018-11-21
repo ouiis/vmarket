@@ -15,7 +15,7 @@
           <img class="w-100" :src="product.imageUrl" alt="">
         </div>
         <div class="col-md-6">
-          <h1 class="h2">{{ product.title }}</h1>
+          <h1 class="h2 mt-md-0 mt-3 text-md-left text-center">{{ product.title }}</h1>
           <hr>
           <div class="h5"><span class="badge badge-info">{{ product.category }}</span></div>
           <p class="h6 my-3">{{ product.description }}</p>
@@ -77,7 +77,7 @@ export default {
         }
       });
     },
-    addtoCart(id, qty = 1) {
+    addtoCart(id, qty) {
       const vm = this;
       const api = `${process.env.APIPATH}/api/${process.env.CUSTOMPATH}/cart`;
       const cart = {
@@ -85,12 +85,16 @@ export default {
         qty
       };
 
-      vm.status.loadingItem = id;
+      if (!this.quantity) {
+        this.$bus.$emit("alertMessage", "請選擇觀看期限", "danger");
+      } else {
+        this.status.loadingItem = id;
 
-      this.$http.post(api, { data: cart }).then(response => {
-        this.$bus.$emit("updateCart");
-        vm.status.loadingItem = "";
-      });
+        this.$http.post(api, { data: cart }).then(response => {
+          this.$bus.$emit("updateCart");
+          vm.status.loadingItem = "";
+        });
+      }
     }
   },
   created() {
