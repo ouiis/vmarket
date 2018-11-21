@@ -46,11 +46,7 @@
                   {{ item.product.title }}
                   <p class="text-success" v-if="item.coupon">已套用優惠券</p>
                 </td>
-<<<<<<< HEAD
-                <td class="align-middle">{{ item.qty }} {{ item.product.unit }}</td>
-=======
                 <td class="align-middle">{{ item.qty }} / {{ item.product.unit }}</td>
->>>>>>> gh-pages
                 <td class="align-middle text-right">
                   <span class="text-success" v-if="item.coupon"> {{ item.final_total | currency }}</span>
                   <span v-else>{{ item.total | currency }}</span>
