@@ -1,6 +1,6 @@
 # V-MARKET
 
-**Vue.js** 前端練習專案，串接 API 模擬電商網頁的的購物流程，使用 Vue CLI 建立專案環境。
+**Vue.js** 前端練習專案，串接 API 模擬電商網頁的購物流程，使用 Vue CLI 建立專案環境。
 
 ## Demo
 
