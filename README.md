@@ -11,7 +11,7 @@
 
 * 使用 **Vue CLI** 搭建 **Vue.js**，建立 SPA 網頁。
 * 使用 **Bootstrap** 完成前端畫面。
-* **Vue Router** 路由配置。 
+* 透過 **Vue Router** 配置路由。 
 
 ## 其他套件
 
