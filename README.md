@@ -1,6 +1,6 @@
 # V-MARKET
 
-使用 **Vue CLI** 建立 **Vue.js** 專案環境，串接 API 模擬電商網頁的購物流程。
+使用 **Vue CLI** 建立 **Vue.js** 專案環境，透過 **AJAX** 串接 API 模擬電商網頁的購物流程。
 
 ## Demo
 
